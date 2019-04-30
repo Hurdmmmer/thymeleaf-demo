@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="fragments/webModel">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf in Action</title>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<h3 th:text="${userModel.title}"></h3>
+<form action="/users" th:action="@{/users}" method="post" th:object="${userModel.user}"> <!--绑定userModel 中的对象-->
+<!--                                           *{id} 绑定当前标签中绑定的object对象中的属性-->
+    <input type="hidden" name="id" th:value="*{id}">
+    邮箱: <input type="text" name="email" th:value="*{email}">
+    <br>
+    名称: <input type="text" name="name" th:value="*{name}">
+    <br>
+    <input type="submit" th:value="提交">
+</form>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

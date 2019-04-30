@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="fragments/webModel">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf in Action</title>
+</head>
+<body>
+<!--thymeleaf 模板引入其他模板片段, ~{} 代表服务器 fragments目录下的header文件中的 header 片段-->
+<div th:replace="~{fragments/header :: header}"></div>
+<h3 th:text="${userModel.title}"></h3>
+<a href="/users/form.html" th:href="@{users/form}">创建用户</a>
+    <table border="1">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Email</td>
+            <td>name</td>
+        </tr>
+        </thead>
+        <tbody>
+<!--        取出controller中modelAndView中存放的模型数据-->
+        <tr th:if="${userModel.userList.size()} eq 0">
+            <td colspan="3">没有用户信息!</td>
+        </tr>
+        <tr th:each="user : ${userModel.userList}" >
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.email}"></td>
+            <td ><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>
+        </tr>
+        </tbody>
+    </table>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
