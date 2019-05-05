@@ -12,9 +12,13 @@
     <P><strong>Email: </strong><span th:text="${userModel.user.email}"></span></P>
     <P><strong>Name: </strong><span th:text="${userModel.user.name}"></span></P>
 
-    <a th:href="@{'/users/modify/'+${userModel.user.id}}">修改</a>
-    <a th:href="@{'/users/delete/'+${userModel.user.id}}">删除</a>
+    <a class="btn btn-primary" th:href="@{'/users/modify/'+${userModel.user.id}}">修改</a>
+    <a  class="btn btn-primary" th:href="@{'/users/delete/'+${userModel.user.id}}">删除</a>
+
+
+    <div  class=" col-lg-4 col-lg-offset-4  col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 container col-center-block" style="margin-top: 10em">
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
 </div>
-<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

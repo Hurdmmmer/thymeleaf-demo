@@ -16,10 +16,12 @@
         <br>
         名称: <input type="text" name="name" class="form-control" th:value="*{name}">
         <br>
-        <input type="submit" class="btn btn-default" th:value="提交">
+        <input type="submit" class="btn btn-primary" th:value="提交">
     </form>
 
+    <div class=" col-lg-4 col-lg-offset-4  col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 container col-center-block" style="margin-top: 10em">
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </div>
 </div>
-<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
