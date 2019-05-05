@@ -5,12 +5,18 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="fragments/webModel">
 <body>
+<header>
+
+    <!--    <div th:replace="~{fragments/header :: header}"></div>-->
+</header>
 <!--thymeleaf 模板引入其他模板片段, ~{} 代表服务器 fragments目录下的header文件中的 header 片段, 注意只能引入 div 标签定义的片段, 不能导入 head 公共css样式等-->
-<!--<div th:replace="~{fragments/header :: header}"></div>-->
 <div th:include="~{fragments/header}"></div>
-<h3 th:text="${userModel.title}"></h3>
-<a href="/users/form.html" th:href="@{users/form}">创建用户</a>
-    <table border="1">
+
+<div class="container blog-content-container">
+    <h3 th:text="${userModel.title}"></h3>
+
+    <a class="btn btn-default" href="/users/form.html" th:href="@{users/form}">创建用户</a>
+    <table class="table table-striped">
         <thead>
         <tr>
             <td>ID</td>
@@ -19,17 +25,21 @@
         </tr>
         </thead>
         <tbody>
-<!--        取出controller中modelAndView中存放的模型数据-->
+        <!--        取出controller中modelAndView中存放的模型数据-->
         <tr th:if="${userModel.userList.size()} eq 0">
             <td colspan="3">没有用户信息!</td>
         </tr>
-        <tr th:each="user : ${userModel.userList}" >
+        <tr th:each="user : ${userModel.userList}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.email}"></td>
-            <td ><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>
+            <td><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>
         </tr>
         </tbody>
     </table>
+</div>
+
+
 <div th:insert="~{fragments/footer :: footer}"></div>
+
 </body>
 </html>

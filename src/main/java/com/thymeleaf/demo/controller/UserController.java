@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -74,5 +76,6 @@ public class UserController {
         model.addAttribute("title", "修改用户");
         return new ModelAndView("/users/form", "userModel", model);
     }
+
 
 }

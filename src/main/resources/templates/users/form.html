@@ -6,16 +6,20 @@
       layout:decorator="fragments/webModel">
 <body>
 <div th:include="~{fragments/header}"></div>
-<h3 th:text="${userModel.title}"></h3>
-<form action="/users" th:action="@{/users}" method="post" th:object="${userModel.user}"> <!--绑定userModel 中的对象-->
-<!--                                           *{id} 绑定当前标签中绑定的object对象中的属性-->
-    <input type="hidden" name="id" th:value="*{id}">
-    邮箱: <input type="text" name="email" th:value="*{email}">
-    <br>
-    名称: <input type="text" name="name" th:value="*{name}">
-    <br>
-    <input type="submit" th:value="提交">
-</form>
+
+<div class="container blog-content-container" >
+    <h3 th:text="${userModel.title}"></h3>
+    <form action="/users" th:action="@{/users}" method="post" th:object="${userModel.user}"> <!--绑定userModel 中的对象-->
+        <!--                                           *{id} 绑定当前标签中绑定的object对象中的属性-->
+        <input type="hidden" name="id" th:value="*{id}">
+        邮箱: <input type="text" class="form-control" name="email" th:value="*{email}">
+        <br>
+        名称: <input type="text" name="name" class="form-control" th:value="*{name}">
+        <br>
+        <input type="submit" class="btn btn-default" th:value="提交">
+    </form>
+
+</div>
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
