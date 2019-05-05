@@ -4,12 +4,8 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="fragments/webModel">
-<head>
-    <meta charset="UTF-8">
-    <title>Thymeleaf in Action</title>
-</head>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
+<div th:include="~{fragments/header}"></div>
 <h3 th:text="${userModel.title}"></h3>
 <form action="/users" th:action="@{/users}" method="post" th:object="${userModel.user}"> <!--绑定userModel 中的对象-->
 <!--                                           *{id} 绑定当前标签中绑定的object对象中的属性-->

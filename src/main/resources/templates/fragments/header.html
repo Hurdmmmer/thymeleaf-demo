@@ -5,8 +5,15 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="fragments/webModel">
 <head>
-    <meta charset="UTF-8">
-    <title>Thymeleaf in Action</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap in action</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles -->
+    <link th:href="@{/css/blog.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div th:fragment="header">
