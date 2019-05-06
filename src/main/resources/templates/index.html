@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<header th:replace="~{fragments/header :: header}"></header>
+<body>
+<div th:replace="~{fragments/header :: nav}"></div>
+<div class="container blog-content-container">
+    <div sec:authorize="isAuthenticated()">
+        <p>已有用户登录</p>
+        <p>登录用户为: <span sec:authentication="name"></span></p>
+        <p>用户角色为: <span sec:authentication="principal.authorities"></span></p>
+    </div>
+    <div sec:authorize="isAnonymous()">
+        <p>未有用户登录</p>
+    </div>
+</div>
+
+
+<div class=" col-lg-4 col-lg-offset-4  col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 container col-center-block" style="margin-top: 10em">
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+</body>
+</html>

@@ -2,9 +2,8 @@
 <html lang="zh-CN"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="fragments/webModel">
-<head>
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:fragment="header">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bootstrap in action</title>
@@ -26,7 +25,7 @@
 <!--    <a href="/users" th:href="@{~/users}"> 回到首页</a>-->
 <!--</div>-->
 
-<nav class="navbar bg-inverse navbar-inverse navbar-toggleable-md">
+<nav class="navbar bg-inverse navbar-inverse navbar-toggleable-md" th:fragment="nav">
     <div class="container">
         <!--        响应式隐藏按钮, 指定菜单 data-target 的 id 窗口变化会自动触发隐藏 -->
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -39,6 +38,21 @@
             <ul class="nav navbar-nav">
                 <li class="nav-item"><a class="nav-link" th:href="@{~/users}"> 回到首页</a></li>
             </ul>
+        </div>
+        <div class="row" sec:authorize="isAuthenticated()">
+            <ul class="navbar-nav mr-auto text-center">
+                <li class="nav-item">
+<!--                    取出登录用户名称-->
+                    <span class="nav-link" sec:authentication="name"></span>
+                </li>
+                <form th:action="@{~/logout}" method="post">
+                    <input type="submit" class="btn btn-outline-success" th:value="登出">
+                </form>
+            </ul>
+            
+        </div>
+        <div sec:authorize="isAnonymous()">
+            <a th:href="@{~/login}" class="btn btn-outline-success my-2 my-sm-0" > 登录</a>
         </div>
     </div>
 </nav>
